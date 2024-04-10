@@ -30,6 +30,7 @@ function generateGrid(size){
             cellSize = parseInt(800/size);
             console.log(cellSize)
             gridCell.style.cssText = `border: 1px solid gray; width: ${cellSize}px !important; height: ${cellSize}px !important;box-sizing:border-box`
+            eventListener(gridCell);
             gridRow.appendChild(gridCell);
         }
         gridCont.appendChild(gridRow);
@@ -42,8 +43,45 @@ function createGrid(){
     generateGrid(userInput);
     console.log(userInput);
 }
+function eventListener(ele){
+    ele.addEventListener("mouseover", (e)=>{
+        console.log('')
+        let colorSelected = selectedColor.value;
+        if(isRandom && isRandom.checked){
+            colorSelected = getRandomColor();
+        }
+        e.srcElement.style["background-color"] = colorSelected;
+        let opacity = e.srcElement.style.opacity;
+        if( !isRandom.checked){
+            if (opacity !== ""){
+                opacity = parseFloat(opacity);
+                if(opacity < 1){
+                    e.srcElement.style.opacity = (opacity+0.1).toFixed(1);
+                }
+            }else{
+                e.srcElement.style.opacity = "0.1";
+            }
+        }
+    })
+}
+function getRandomInt(min, max) {
+    const minCeiled = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); 
+  }
+function getRandomColor(){
+    if(isRandom && isRandom.checked){
+        let rgbR=getRandomInt(0,255); 
+        let rgbB = getRandomInt(0,255);
+        let rgbG = getRandomInt(0,255);
+        let colorString = `rgb(${rgbR},${rgbB},${rgbG})`
+        return colorString;
+    }
+}
+let selectedColor = document.querySelector("#colorPickerId");
+let isRandom = document.querySelector('#rainbowTrail');
 let gridBtn = document.querySelector('#createGrid')
-gridBtn.addEventListener('click',(e)=>{
-    console.log(e)
+gridBtn.addEventListener('click',(data)=>{
+    console.log(data)
     createGrid();
 })
