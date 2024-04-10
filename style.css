@@ -5,6 +5,7 @@ body{
     /* flex: 1; */
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
 }
 .mainBody{
     display: flex;
@@ -26,6 +27,18 @@ body{
     height: 800px;
     display: flex;
     flex-wrap: wrap;
-    /* flex: 1; */
+    flex: 1;
     border: 1px solid black;
+    box-sizing:border-box;
+}
+.gridCont{
+    flex-direction: row;
+    border: none;
+    /* box-sizing: border-box; */
+    justify-content: flex-start;
+}
+.gridRow{
+    display: flex;
+    flex: 1;
+    width: 100%;
 }
