@@ -1,0 +1,31 @@
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* flex: 1; */
+    justify-content: center;
+    align-items: center;
+}
+.mainBody{
+    display: flex;
+    flex-direction: column;
+    /* flex: 1; */
+    gap: 20px;
+    width: 800px;
+    height: 800px;
+    
+}
+.topCont{
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    /* flex: 1; */
+}
+.btmCont,.gridCont{
+    width: 800px;
+    height: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    /* flex: 1; */
+    border: 1px solid black;
+}
